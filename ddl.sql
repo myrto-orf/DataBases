@@ -318,7 +318,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`StandardUnit` (
   `StandardUnitID` INT NOT NULL,
-  `StandardUnitName` VARCHAR(45) NOT NULL,
+  `StandardUnitName` ENUM('gr', 'ml') NOT NULL,
   PRIMARY KEY (`StandardUnitID`))
 ENGINE = InnoDB;
 
@@ -383,44 +383,42 @@ ENGINE = InnoDB;
 -- Trigger creation statements
 DELIMITER //
 
-CREATE TRIGGER calculate_fats_per_serving
+DROP TRIGGER IF EXISTS calculate_fats_per_serving;
+CREATE TRIGGER calculate_fats_per_serving 
 BEFORE INSERT ON `mydb`.`NutricionalInfo`
 FOR EACH ROW
 BEGIN
-    DECLARE fats_per_ingredient INT;
+    DECLARE fats_per_ingredient DECIMAL(10, 2);
     DECLARE standard_unit_convert_value INT;
-    DECLARE standard_unit_id INT;
+    DECLARE unit_id INT;
     DECLARE quantity_value INT;
     DECLARE number_of_portions INT;
+    DECLARE ingredient_id INT; 
+    
+    SET ingredient_id = (SELECT IngredientID FROM Recipe_has_Ingredient WHERE RecipeID = NEW.RecipeID);
 
-    -- Find FatsPer100 from NutricionalContent table
     SELECT nc.FatsPer100
     INTO fats_per_ingredient
     FROM NutricionalContent nc
-    WHERE nc.IngredientID = NEW.IngredientID;
+    WHERE nc.IngredientID = ingredient_id;
 
-    -- Find StandardUnitID and QuantityValue from Quantity table
     SELECT q.UnitID, q.QuantityValue
-    INTO standard_unit_id, quantity_value
+    INTO unit_id, quantity_value
     FROM Quantity q
-    WHERE q.IngredientID = NEW.IngredientID;
+    WHERE q.IngredientID = ingredient_id;
 
-    -- Find UnitConvertValue from Unit table
     SELECT u.UnitConvertValue
     INTO standard_unit_convert_value
     FROM Unit u
-    WHERE u.UnitID = standard_unit_id;
+    WHERE u.UnitID = unit_id;
 
-    -- Find NumberOfPortions from Recipe table
     SELECT NumberOfPortions
     INTO number_of_portions
     FROM Recipe
     WHERE RecipeID = NEW.RecipeID;
 
-    -- Calculate FatsPerIngredient
     SET fats_per_ingredient = fats_per_ingredient * quantity_value * standard_unit_convert_value;
 
-    -- Calculate FatsPerServing
     SET NEW.FatsPerServing = fats_per_ingredient / number_of_portions;
 END//
 
@@ -428,87 +426,86 @@ DELIMITER ;
 
 DELIMITER //
 
+DROP TRIGGER IF EXISTS calculate_protein_per_serving;
 CREATE TRIGGER calculate_protein_per_serving
 BEFORE INSERT ON `mydb`.`NutricionalInfo`
 FOR EACH ROW
 BEGIN
-    DECLARE protein_per_ingredient INT;
+    DECLARE protein_per_ingredient DECIMAL(10, 2); 
     DECLARE standard_unit_convert_value INT;
+    DECLARE unit_id INT;
     DECLARE quantity_value INT;
     DECLARE number_of_portions INT;
+    DECLARE ingredient_id INT; 
 
-    -- Find ProteinPer100 from NutricionalContent table
+    SET ingredient_id = (SELECT IngredientID FROM Recipe_has_Ingredient WHERE RecipeID = NEW.RecipeID);
+
     SELECT nc.ProteinPer100
     INTO protein_per_ingredient
     FROM NutricionalContent nc
-    WHERE nc.IngredientID = NEW.IngredientID;
+    WHERE nc.IngredientID = ingredient_id;
 
-    -- Find StandardUnitID and QuantityValue from Quantity table
     SELECT q.UnitID, q.QuantityValue
-    INTO standard_unit_id, quantity_value
+    INTO unit_id, quantity_value
     FROM Quantity q
-    WHERE q.IngredientID = NEW.IngredientID;
+    WHERE q.IngredientID = ingredient_id;
 
-    -- Find UnitConvertValue from Unit table
     SELECT u.UnitConvertValue
     INTO standard_unit_convert_value
     FROM Unit u
-    WHERE u.UnitID = standard_unit_id;
+    WHERE u.UnitID = unit_id;
 
-    -- Find NumberOfPortions from Recipe table
     SELECT NumberOfPortions
     INTO number_of_portions
     FROM Recipe
     WHERE RecipeID = NEW.RecipeID;
 
-    -- Calculate ProteinPerIngredient
     SET protein_per_ingredient = protein_per_ingredient * quantity_value * standard_unit_convert_value;
 
-    -- Calculate ProteinPerServing
     SET NEW.ProteinPerServing = protein_per_ingredient / number_of_portions;
 END//
+
 
 DELIMITER ;
 
 DELIMITER //
 
+DROP TRIGGER IF EXISTS calculate_carbs_per_serving;
 CREATE TRIGGER calculate_carbs_per_serving
 BEFORE INSERT ON `mydb`.`NutricionalInfo`
 FOR EACH ROW
 BEGIN
-    DECLARE carbs_per_ingredient INT;
+    DECLARE carbs_per_ingredient DECIMAL(10, 2);
     DECLARE standard_unit_convert_value INT;
+    DECLARE unit_id INT;
     DECLARE quantity_value INT;
     DECLARE number_of_portions INT;
+    DECLARE ingredient_id INT; 
 
-    -- Find CarbsPer100 from NutricionalContent table
+    SET ingredient_id = (SELECT IngredientID FROM Recipe_has_Ingredient WHERE RecipeID = NEW.RecipeID);
+
     SELECT nc.CarbsPer100
     INTO carbs_per_ingredient
     FROM NutricionalContent nc
-    WHERE nc.IngredientID = NEW.IngredientID;
+    WHERE nc.IngredientID = ingredient_id;
 
-    -- Find StandardUnitID and QuantityValue from Quantity table
     SELECT q.UnitID, q.QuantityValue
-    INTO standard_unit_id, quantity_value
+    INTO unit_id, quantity_value
     FROM Quantity q
-    WHERE q.IngredientID = NEW.IngredientID;
+    WHERE q.IngredientID = ingredient_id;
 
-    -- Find UnitConvertValue from Unit table
     SELECT u.UnitConvertValue
     INTO standard_unit_convert_value
     FROM Unit u
-    WHERE u.UnitID = standard_unit_id;
+    WHERE u.UnitID = unit_id;
 
-    -- Find NumberOfPortions from Recipe table
     SELECT NumberOfPortions
     INTO number_of_portions
     FROM Recipe
     WHERE RecipeID = NEW.RecipeID;
 
-    -- Calculate CarbsPerIngredient
     SET carbs_per_ingredient = carbs_per_ingredient * quantity_value * standard_unit_convert_value;
 
-    -- Calculate CarbsPerServing
     SET NEW.CarbsPerServing = carbs_per_ingredient / number_of_portions;
 END//
 
@@ -516,46 +513,44 @@ DELIMITER ;
 
 DELIMITER //
 
+DROP TRIGGER IF EXISTS calculate_calories_per_serving;
 CREATE TRIGGER calculate_calories_per_serving
 BEFORE INSERT ON `mydb`.`NutricionalInfo`
 FOR EACH ROW
 BEGIN
-    DECLARE calories_per_ingredient INT;
+    DECLARE calories_per_ingredient DECIMAL(10, 2);
     DECLARE standard_unit_convert_value INT;
+    DECLARE unit_id INT;
     DECLARE quantity_value INT;
     DECLARE number_of_portions INT;
+    DECLARE ingredient_id INT; 
 
-    -- Find CaloriesPer100 from NutricionalContent table
+    SET ingredient_id = (SELECT IngredientID FROM Recipe_has_Ingredient WHERE RecipeID = NEW.RecipeID);
+
     SELECT nc.CaloriesPer100
     INTO calories_per_ingredient
     FROM NutricionalContent nc
-    WHERE nc.IngredientID = NEW.IngredientID;
+    WHERE nc.IngredientID = ingredient_id;
 
-    -- Find StandardUnitID and QuantityValue from Quantity table
     SELECT q.UnitID, q.QuantityValue
-    INTO standard_unit_id, quantity_value
+    INTO unit_id, quantity_value
     FROM Quantity q
-    WHERE q.IngredientID = NEW.IngredientID;
+    WHERE q.IngredientID = ingredient_id;
 
-    -- Find UnitConvertValue from Unit table
     SELECT u.UnitConvertValue
     INTO standard_unit_convert_value
     FROM Unit u
-    WHERE u.UnitID = standard_unit_id;
+    WHERE u.UnitID = unit_id;
 
-    -- Find NumberOfPortions from Recipe table
     SELECT NumberOfPortions
     INTO number_of_portions
     FROM Recipe
     WHERE RecipeID = NEW.RecipeID;
 
-    -- Calculate CaloriesPerIngredient
     SET calories_per_ingredient = calories_per_ingredient * quantity_value * standard_unit_convert_value;
 
-    -- Calculate CaloriesPerServing
     SET NEW.CaloriesPerServing = calories_per_ingredient / number_of_portions;
 END//
-
 DELIMITER ;
 
 
@@ -600,7 +595,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Cook` (
   `TotalScore` INT NOT NULL,
   `IsWinner` BOOLEAN NOT NULL,
   `ImageID` INT NOT NULL,	
+  `CuisineID` INT NOT NULL,
   PRIMARY KEY (`CookID`),
+  CONSTRAINT `FK_Cook_EthnicCuisine`
+    FOREIGN KEY (`CuisineID`)
+    REFERENCES `mydb`.`EthnicCuisine` (`CuisineID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `FK_Cook_Image`
     FOREIGN KEY (`ImageID`)
     REFERENCES `mydb`.`Image` (`ImageID`)
@@ -611,6 +612,7 @@ ENGINE = InnoDB;
 
 DELIMITER //
 
+DROP TRIGGER IF EXISTS calculate_age_before_insert;
 CREATE TRIGGER calculate_age_before_insert
 BEFORE INSERT ON `mydb`.`Cook`
 FOR EACH ROW
@@ -619,6 +621,7 @@ BEGIN
 END;
 //
 
+DROP TRIGGER IF EXISTS calculate_age_before_update;
 CREATE TRIGGER calculate_age_before_update
 BEFORE UPDATE ON `mydb`.`Cook`
 FOR EACH ROW
@@ -660,14 +663,36 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Episode` (
   `EpisodeNumber` INT NOT NULL,
   `EpisodeSeason` INT NOT NULL,
   `ImageID` INT NOT NULL,	
+  `SeasonID` INT NOT NULL,
   PRIMARY KEY (`EpisodeID`),
   CONSTRAINT `FK_Episode_Image`
     FOREIGN KEY (`ImageID`)
     REFERENCES `mydb`.`Image` (`ImageID`)
     ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `FK_Episode_Season`
+    FOREIGN KEY (`SeasonID`)
+    REFERENCES `mydb`.`Season` (`SeasonID`)
+    ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Season`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Season` (
+  `SeasonID` INT NOT NULL,
+  `SeasonStartDate` DATE NOT NULL,
+  `ImageID` INT NOT NULL,	
+  PRIMARY KEY (`SeasonID`),
+  CONSTRAINT `FK_Season_Image`
+    FOREIGN KEY (`ImageID`)
+    REFERENCES `mydb`.`Image` (`ImageID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Judge`
@@ -689,6 +714,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Judge` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- CREATE INDEX idx_cook_ethnic_cuisine ON `Cook` (`CuisineID`);
+-- CREATE INDEX idx_recipe_cook_ethnic_cuisine ON `Recipe` (`CookID`, `CuisineID`);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
