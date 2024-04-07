@@ -591,7 +591,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Cook` (
   `BirthDate` DATE NOT NULL,
   `Age` INT NOT NULL,
   `ExperienceYears` INT NOT NULL,
-  `TrainingLevel` ENUM('Γ΄ μάγειρας', 'Β΄ μάγειρας', 'Α΄ μάγειρας', 'βοηθός αρχιμάγειρα', 'αρχιμάγειρας (σεφ)') NOT NULL,
+  `TrainingLevel` ENUM('C cook', 'B cook', 'A cook', 'helper of chef', 'chef') NOT NULL,
   `TotalScore` INT NOT NULL,
   `IsWinner` BOOLEAN NOT NULL,
   `ImageID` INT NOT NULL,	
