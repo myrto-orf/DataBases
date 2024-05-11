@@ -23,7 +23,9 @@ USE `cooking_competition` ;
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Image` (
   `ImageID` INT NOT NULL AUTO_INCREMENT,
   `ImageDescription` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`ImageID`))
+  PRIMARY KEY (`ImageID`),
+  UNIQUE (`ImageID`)
+  )
 ENGINE = InnoDB;
 
 
@@ -35,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`EthnicCuisine` (
   `CuisineName` VARCHAR(45) NULL,
   `ImageID` INT NULL,
   PRIMARY KEY (`CuisineID`),
+  UNIQUE (`CuisineID`),
   INDEX `ImageID_idx` (`ImageID` ASC) ,
   CONSTRAINT `EthnicCuisine_ImageID`
     FOREIGN KEY (`ImageID`)
@@ -53,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`FoodGroup` (
   `GroupDescription` VARCHAR(45) NOT NULL,
   `ImageID` INT NULL,
   PRIMARY KEY (`GroupID`),
+  UNIQUE (`GroupID`),
   CONSTRAINT `FoodGroup_ImageID`
     FOREIGN KEY (`ImageID`)
     REFERENCES `cooking_competition`.`Image` (`ImageID`)
@@ -70,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`Ingredient` (
   `ImageID` INT NULL,
   `GroupID` INT NOT NULL,
   PRIMARY KEY (`IngredientID`),
+  UNIQUE (`IngredientID`),
   INDEX `GroupID_idx` (`GroupID` ASC) ,
   INDEX `ImageID_idx` (`ImageID` ASC) ,
   CONSTRAINT `Ingredient_GroupID`
@@ -91,7 +96,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Recipe` (
   `RecipeID` INT NOT NULL AUTO_INCREMENT,
   `RecipeName` VARCHAR(45) NOT NULL,
-  `IsBaking` INT NOT NULL,
+  `IsBaking` INT NULL,
   `DifficultyLevel` INT NOT NULL,
   `Description` VARCHAR(200) NULL,
   `PreparationTime` INT NULL,
@@ -101,6 +106,9 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`Recipe` (
   `CuisineID` INT NOT NULL,
   `MainIngredientID` INT NOT NULL,
   PRIMARY KEY (`RecipeID`),
+  UNIQUE (`RecipeID`),
+  CHECK (`DifficultyLevel` in (1, 2, 3, 4, 5)),
+  CHECK (`IsBaking` in (0, 1)),
   INDEX `Recipe_CuisineID_idx` (`CuisineID` ASC) ,
   INDEX `Recipe_MainIngredientID_idx` (`MainIngredientID` ASC) ,
   INDEX `Recipe_ImageID_idx` (`ImageID` ASC) ,
@@ -128,7 +136,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Label` (
   `LabelID` INT NOT NULL AUTO_INCREMENT,
   `LabelName` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`LabelID`))
+  PRIMARY KEY (`LabelID`),
+  UNIQUE (`LabelID`)
+  )
 ENGINE = InnoDB;
 
 
@@ -138,7 +148,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`MealCategory` (
   `CategoryID` INT NOT NULL AUTO_INCREMENT,
   `CategoryName` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`CategoryID`))
+  PRIMARY KEY (`CategoryID`),
+  UNIQUE (`CategoryID`)
+  )
 ENGINE = InnoDB;
 
 
@@ -147,10 +159,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Tips` (
   `TipsID` INT NOT NULL AUTO_INCREMENT,
-  `TipsDescription` VARCHAR(45) NOT NULL,
+  `TipsDescription` VARCHAR(100) NOT NULL,
   `RecipeID` INT NOT NULL,
   PRIMARY KEY (`TipsID`),
-  UNIQUE INDEX `TipsID_UNIQUE` (`TipsID` ASC) ,
+  UNIQUE (`TipsID`),
   INDEX `Tips_RecipeID_idx` (`RecipeID` ASC) ,
   CONSTRAINT `Tips_RecipeID`
     FOREIGN KEY (`RecipeID`)
@@ -166,9 +178,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Step` (
   `StepID` INT NOT NULL AUTO_INCREMENT,
   `StepNumber` INT NOT NULL,
-  `StepDescription` VARCHAR(45) NOT NULL,
+  `StepDescription` VARCHAR(100) NOT NULL,
   `RecipeID` INT NOT NULL,
   PRIMARY KEY (`StepID`),
+  UNIQUE (`StepID`),
   INDEX `Tips_RecipeID_idx` (`RecipeID` ASC) ,
   CONSTRAINT `Step_RecipeID`
     FOREIGN KEY (`RecipeID`)
@@ -227,9 +240,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Equipment` (
   `EquipmentID` INT NOT NULL AUTO_INCREMENT,
   `EquipmentName` VARCHAR(45) NOT NULL,
-  `EquipmentInstructions` VARCHAR(45) NULL,
+  `EquipmentInstructions` VARCHAR(200) NULL,
   `ImageID` INT NULL,
   PRIMARY KEY (`EquipmentID`),
+  UNIQUE (`EquipmentID`),
   INDEX `Equipment_ImageID_idx` (`ImageID` ASC) ,
   CONSTRAINT `Equipment_ImageID`
     FOREIGN KEY (`ImageID`)
@@ -244,11 +258,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Recipe_Equipment` (
   `RecipeID` INT NOT NULL,
-  `EquipmentIDl` INT NOT NULL,
-  PRIMARY KEY (`RecipeID`, `EquipmentIDl`),
-  INDEX `Recipe_Equipment_EquipmentID_idx` (`EquipmentIDl` ASC) ,
+  `EquipmentID` INT NOT NULL,
+  PRIMARY KEY (`RecipeID`, `EquipmentID`),
+  INDEX `Recipe_Equipment_EquipmentID_idx` (`EquipmentID` ASC) ,
   CONSTRAINT `Recipe_Equipment_EquipmentID`
-    FOREIGN KEY (`EquipmentIDl`)
+    FOREIGN KEY (`EquipmentID`)
     REFERENCES `cooking_competition`.`Equipment` (`EquipmentID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -269,6 +283,7 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`ThematicUnit` (
   `ThematicUnitDescription` VARCHAR(45) NOT NULL,
   `ImageID` INT NULL,
   PRIMARY KEY (`ThematicUnitID`),
+  UNIQUE (`ThematicUnitID`),
   INDEX `ThematicUnit_ImageID_idx` (`ImageID` ASC) ,
   CONSTRAINT `ThematicUnit_ImageID`
     FOREIGN KEY (`ImageID`)
@@ -366,7 +381,7 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`NutritionalContent` (
   `NutritionalContentID` INT NOT NULL,
   `FatsPer100` INT NOT NULL,
   `ProteinPer100` INT NOT NULL,
-  `CarbsPer100` INT NOT NULL,
+  `CarbsPer100` INT NULL,
   `CaloriesPer100` INT NOT NULL,
   `IngredientID` INT NOT NULL,
   PRIMARY KEY (`NutritionalContentID`),
@@ -392,6 +407,7 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`Cook` (
   `TrainingLevel` VARCHAR(45) NOT NULL,
   `ImageID` INT NULL,
   `PhoneNumber` INT NULL,
+  CHECK (`TrainingLevel` in ("C cook", "B cook", "A cook", "sous chef", "chef")),
   PRIMARY KEY (`CookID`),
   INDEX `Cook_ImageID_idx` (`ImageID` ASC) ,
   CONSTRAINT `Cook_ImageID`
