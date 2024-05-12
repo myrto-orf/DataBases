@@ -22,7 +22,8 @@ USE `cooking_competition` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Image` (
   `ImageID` INT NOT NULL AUTO_INCREMENT,
-  `ImageDescription` VARCHAR(45) NOT NULL,
+  `ImageDescription` VARCHAR(45) NULL,
+  `ImageFile` BLOB NOT NULL,
   PRIMARY KEY (`ImageID`),
   UNIQUE (`ImageID`)
   )

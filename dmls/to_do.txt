@@ -1,0 +1,6 @@
+generate data for db
+use themealdb.com to find data related to recipes
+create dummy data for some fields
+create data by hand for the other fields
+
+use a programming language to insert the above data to the db
