@@ -407,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`Cook` (
   `ExperienceYears` INT NOT NULL,
   `TrainingLevel` VARCHAR(45) NOT NULL,
   `ImageID` INT NULL,
-  `PhoneNumber` INT NULL,
+  `PhoneNumber` VARCHAR(20) NULL,
   CHECK (`TrainingLevel` in ("C cook", "B cook", "A cook", "sous chef", "chef")),
   PRIMARY KEY (`CookID`),
   INDEX `Cook_ImageID_idx` (`ImageID` ASC) ,
