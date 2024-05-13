@@ -2,33 +2,37 @@ from faker import Faker
 import random
 
 class rand:
-    def date(min, max):
-        fake = Faker()
+    def __init__(self):
+        self.fake = Faker()
 
-        return str(fake.date_between(start_date=min, end_date=max))
+    def date(self, min, max):
+        return str(self.fake.date_between(start_date=min, end_date=max))
     
-    def listValue(list):
+    def listValue(self, list):
         index = random.randint(1, len(list) - 1)
         return list[index]
     
-    def firstName():
-        fake = Faker()
-        return str(fake.first_name())
+    def firstName(self):
+        return str(self.fake.first_name())
     
-    def lastName():
-        fake = Faker()
-        return str(fake.last_name())
+    def lastName(self):
+        return str(self.fake.last_name())
     
-    def phoneNumber():
-        fake = Faker()
-        return str(fake.phone_number())
+    def phoneNumber(self):
+        return str(self.fake.phone_number())
 
-# date = rand.date('-30y', '-20y')
-# print(date)
+"""
+# examples:
 
-# list = ['A cook', 'B cook', 'C cook', 'Chef']
-# print(rand.listValue(list))
+rand_gen = rand()
+date = rand_gen.date(min='-30y', max='-20y')
+print(date)
 
-# print(rand.firstName())
-# print(rand.lastName())
-# print(rand.phoneNumber())
+list = ['A cook', 'B cook', 'C cook', 'Chef']
+print(rand_gen.listValue(list))
+
+print(rand_gen.firstName())
+print(rand_gen.lastName())
+print(rand_gen.phoneNumber())
+
+"""

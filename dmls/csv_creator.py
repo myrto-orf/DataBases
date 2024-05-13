@@ -9,13 +9,14 @@ class csvCreator:
         file.write("FirstName,LastName,BirthDate,ExperienceYears,TrainingLevel,PhoneNumber\n")
 
         level_vals = ["C cook", "B cook", "A cook", "sous chef", "chef"]
+        rand_gen = dg.rand()
         for _ in range(size):
-            firstName = dg.rand.firstName()
-            lastName = dg.rand.lastName()
-            birth = dg.rand.date('-60y', '-18y')
+            firstName = rand_gen.firstName()
+            lastName = rand_gen.lastName()
+            birth = rand_gen.date('-60y', '-18y')
             experience = str(random.randint(0, 30))
-            level = dg.rand.listValue(level_vals)
-            phone = dg.rand.phoneNumber()
+            level = rand_gen.listValue(level_vals)
+            phone = rand_gen.phoneNumber()
             line = "'" + firstName + "','" + lastName + "','" + birth + "'," + experience + ",'" + level + "','" + phone + "'\n"
             file.write(line)
         file.close()

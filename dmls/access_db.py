@@ -1,7 +1,7 @@
 import mysql.connector
 import csv
 
-def insertData(file_path, table_name):
+def generateInstructions(file_path, table_name):
 	sql_instructions = []
 	with open(file_path, mode='r') as file:
 		csvFile = csv.reader(file)
@@ -17,15 +17,20 @@ def insertData(file_path, table_name):
 			sql_line = sql_line[:-2]
 			sql_line += ") VALUES ("
 			for value in line:
-				#sql_line += "'"
 				sql_line += value
-				#sql_line += "'"
 				sql_line += ", "
 			sql_line = sql_line[:-2]
 			sql_line += ")"
 			sql_instructions.append(sql_line)
 
 	return sql_instructions
+
+def insertData(db, db_cursor, file_path, table_name):
+	instructions = generateInstructions(file_path, table_name)
+
+	for instr in instructions:
+		db_cursor.execute(instr)
+		db.commit()
 
 # change the password if yours is different
 mydb = mysql.connector.connect(
@@ -39,17 +44,6 @@ mydb = mysql.connector.connect(
 # statements in 'Python'
 cursor = mydb.cursor()
 
-# Show database
-"""
-cursor.execute("show databases")
-
-for x in cursor:
-    print(x)
-"""
 cursor.execute("USE cooking_competition")
-instructions = insertData('csv_files\cook.csv', 'Cook')
-
-for instr in instructions:
-	cursor.execute(instr)
-	mydb.commit()
-
+# insertData(mydb, cursor, 'csv_files\cook.csv', 'Cook')
+# insertData(mydb, cursor, 'csv_files\StandardUnit.csv', 'StandardUnit')
