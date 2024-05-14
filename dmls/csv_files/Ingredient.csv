@@ -1,0 +1,731 @@
+IngredientName,GroupID
+'digestive biscuits',2
+'butter',1
+'Bramley apples',2
+'butter softened',1
+'caster sugar',2
+'free-range eggs beaten',2
+'ground almonds',1
+'almond extract',1
+'flaked almonds',2
+'Plain Flour',1
+'Caster Sugar',1
+'Butter',2
+'Braeburn Apples',1
+'Demerara Sugar',2
+'Blackberrys',2
+'Cinnamon',2
+'Ice Cream',2
+'Milk',2
+'Oil',2
+'Eggs',2
+'Flour',1
+'Baking Powder',2
+'Salt',2
+'Unsalted Butter',1
+'Sugar',2
+'Peanut Butter',2
+'Chicken Thighs',1
+'Challots',2
+'Ginger',1
+'Garlic Clove',2
+'Cayenne Pepper',1
+'Turmeric',1
+'Cumin',1
+'Coriander',2
+'Fennel',1
+'Tamarind Paste',1
+'Coconut Milk',1
+'Water',1
+'plain flour',1
+'chilled butter',2
+'cold water',2
+'raspberry jam',1
+'free-range egg beaten',2
+'bread',2
+'sultanas',2
+'cinnamon',1
+'milk',1
+'double cream',2
+'eggs',2
+'sugar',1
+'nutmeg',1
+'mushrooms',1
+'English Mustard',1
+'Olive Oil',2
+'Beef Fillet',2
+'Parma ham',2
+'Puff Pastry',1
+'Egg Yolks',1
+'Aubergine',2
+'Onion',2
+'Tomatoes',1
+'Garlic',1
+'Green Chili',1
+'Red Chili Powder',2
+'Coriander Leaves',1
+'salt',2
+'Beef Brisket',2
+'Thyme',2
+'Rosemary',2
+'Bay Leaves',2
+'beef stock',2
+'Carrots',1
+'Mustard',2
+'Potatoes',1
+'Beef',2
+'Broccoli',1
+'sunflower oil',2
+'Onions',2
+'Olive oil',1
+'Chorizo',1
+'All spice',2
+'Cloves',2
+'Cinnamon stick',1
+'Oregano',1
+'Ancho Chillies',1
+'Balsamic Vinegar',2
+'Plum Tomatoes',2
+'Tomato Ketchup',2
+'Dark Brown Sugar',2
+'Borlotti Beans',1
+'Mushrooms',1
+'Creme Fraiche',2
+'Beef Stock',1
+'Parsley',1
+'Rapeseed Oil',2
+'Celery',2
+'Leek',1
+'Vegetable Stock',2
+'Stilton Cheese',1
+'Sausages',2
+'Tomato Sauce',2
+'Butter Beans',1
+'Black Treacle',2
+'Banana',1
+'Vanilla Extract',2
+'Pecan Nuts',2
+'Raspberries',1
+'Swede',2
+'Red Wine',2
+'Bay Leaf',2
+'Suet',2
+'Green Beans',2
+'Pepper',1
+'Shallots',1
+'Bacon',1
+'Stout',1
+'Corn Flour',2
+'Oysters',2
+'Hazlenuts',2
+'Lemon',1
+'Lemon Juice',1
+'Double Cream',2
+'Yogurt',2
+'Mint',1
+'Self-raising Flour',1
+'Almonds',2
+'Almond Extract',2
+'Pink Food Colouring',1
+'Apricot',2
+'Marzipan',2
+'Icing Sugar',1
+'Goose Fat',2
+'Beef Shin',2
+'Chestnut Mushroom',1
+'Bouquet Garni',1
+'Tomato Puree',1
+'Celeriac',1
+'Cardamom',1
+'Yeast',1
+'Brie',1
+'Prosciutto',1
+'Chicken',2
+'Tomato',2
+'Red Pepper',2
+'Lime',1
+'Allspice',2
+'Soy Sauce',1
+'Cornstarch',2
+'Vegetable Oil',2
+'Sesame Seed Oil',2
+'Egg',2
+'Starch',1
+'Noodles',1
+'Minced Garlic',2
+'Bean Sprouts',2
+'Oyster Sauce',1
+'Cherry Tomatoes',1
+'Salmon',2
+'Black Olives',2
+'Ricotta',2
+'Lemons',1
+'Dark Rum',2
+'Maple Syrup',1
+'Nutmeg',1
+'Breadcrumbs',2
+'Red Onions',1
+'Bread',2
+'Pork',1
+'Barbeque Sauce',2
+'Hotsauce',1
+'Rice',1
+'Cucumber',2
+'Ground Beef',1
+'Minced Beef',1
+'Sesame Seed Burger Buns',1
+'Iceberg Lettuce',1
+'Cheese',2
+'Dill Pickles',2
+'Mayonnaise',2
+'White Wine Vinegar',2
+'Onion Salt',1
+'Garlic Powder',2
+'Paprika',2
+'Kielbasa',1
+'Cabbage',1
+'Sauerkraut',2
+'Basil',1
+'Marjoram',2
+'Caraway Seed',1
+'Diced Tomatoes',2
+'Worcestershire Sauce',2
+'Spring Onions',1
+'Egg White',2
+'Bicarbonate Of Soda',2
+'Cinnamon Stick',2
+'Star Anise',2
+'Coconut Cream',1
+'Filo Pastry',1
+'Black Pepper',2
+'Green Pepper',1
+'Chilli Powder',2
+'Beef Stock Concentrate',1
+'Beetroot',2
+'Chicken Stock Cube',1
+'Cannellini Beans',2
+'Dill',1
+'Buckwheat',2
+'Plain chocolate',1
+'Granulated Sugar',2
+'Enchilada sauce',2
+'shredded Monterey Jack cheese',2
+'corn tortillas',1
+'chicken breasts',2
+'Parmesan Cheese',2
+'Plum tomatoes',2
+'White Vinegar',1
+'Honey',2
+'salted butter',2
+'dark soft brown sugar',1
+'golden syrup',1
+'orange',1
+'rolled oats',2
+'Christmas pudding',2
+'Ginger paste',1
+'Vegetable oil',1
+'Cumin seeds',1
+'Coriander seeds',1
+'Turmeric powder',2
+'Chilli powder',1
+'Green chilli',1
+'Cream',2
+'fenugreek',2
+'Garam masala',2
+'Squash',1
+'onion',1
+'garlic',1
+'red pepper flakes',2
+'white wine',2
+'heavy cream',2
+'Parmesan cheese',2
+'bowtie pasta',2
+'macaroni',2
+'chicken stock',1
+'fajita seasoning',2
+'chicken breast',1
+'olive oil',1
+'red pepper',1
+'cheddar cheese',2
+'parsley',2
+'cajun',1
+'cayenne pepper',1
+'white fish',2
+'vegetable oil',2
+'flour tortilla',1
+'avocado',1
+'little gem lettuce',1
+'spring onion',1
+'salsa',2
+'sour cream',2
+'lemon',1
+'Chicken Breasts',1
+'Vinaigrette Dressing',1
+'Smoked Paprika',1
+'Refried Beans',1
+'Hard Taco Shells',1
+'Shredded Mexican Cheese',2
+'Grape Tomatoes',1
+'Jalapeno',1
+'Avocado',1
+'Green Salsa',1
+'Sour Cream',2
+'Chicken thigh',2
+'Soy sauce',2
+'Sake',1
+'Granulated sugar',2
+'Potato starch',1
+'Chicken Legs',2
+'Brandy',2
+'Chicken Stock',2
+'tomato puree',2
+'thyme',1
+'bay leaves',1
+'chestnut mushroom',2
+'Linguine Pasta',2
+'Sugar Snap Peas',1
+'Red Chilli',1
+'King Prawns',1
+'Basil Leaves',2
+'Lettuce',1
+'Fromage Frais',1
+'Clams',2
+'Chopped Tomatoes',2
+'Passata',1
+'Vegetable Stock Cube',1
+'Whole Milk',2
+'Mustard Powder',2
+'Sweetcorn',1
+'Chicken Breast',2
+'Harissa Spice',2
+'Dried Apricots',1
+'Chickpeas',1
+'Couscous',1
+'Cacao',1
+'Vanilla',2
+'Sea Salt',1
+'Cream Cheese',1
+'Light Brown Soft Sugar',2
+'Dark Brown Soft Sugar',2
+'Dark Chocolate Chips',1
+'Dark Chocolate',2
+'Milk Chocolate',2
+'Salted Butter',1
+'Cocoa',1
+'Red Wine Vinegar',1
+'Corn Tortillas',2
+'White Wine',2
+'Ham',1
+'Free-range Egg Beaten',1
+'Cold Water',1
+'Tinned Tomatos',1
+'Gruyere cheese',2
+'Walnuts',1
+'White Flour',2
+'Brown Sugar',1
+'Dried Fruit',1
+'Single Cream',1
+'Red Wine Jelly',2
+'Shortcrust Pastry',2
+'Muscovado Sugar',1
+'Raisins',1
+'Sun-Dried Tomatoes',1
+'Basmati Rice',1
+'Dry White Wine',2
+'Kale',2
+'Ginger Cordial',2
+'Mars Bar',2
+'Rice Krispies',1
+'Chili Powder',1
+'Cashew Nuts',2
+'Orange Blossom Water',2
+'Lentils',1
+'Red Pepper Flakes',2
+'Orange',1
+'Grand Marnier',1
+'Christmas Pudding',2
+'Custard',1
+'Mascarpone',1
+'Flaked Almonds',1
+'Bramley Apples',1
+'Candied Peel',1
+'Ground Almonds',1
+'Sherry',1
+'Glace Cherry',2
+'Currants',2
+'Mixed Spice',2
+'Rose water',2
+'Small Potatoes',2
+'Italian Fennel Sausages',1
+'Shiitake Mushrooms',2
+'Quinoa',1
+'Feta',2
+'Pickle Juice',1
+'Celery Salt',1
+'Pork Chops',2
+'Cider',1
+'Minced Pork',1
+'Courgettes',2
+'Lamb Shoulder',2
+'Garlic Sauce',1
+'Mozzarella',2
+'Egg Plants',2
+'Sesame Seed',1
+'Toor dal',1
+'Ghee',2
+'Chopped tomatoes',1
+'Mustard Seeds',1
+'Cilantro',2
+'Garam Masala',1
+'Apricot Jam',1
+'Duck Legs',1
+'strawberries',2
+'meringue nests',2
+'ginger cordial',2
+'Mixed Peel',2
+'Black Pudding',2
+'Red Snapper',1
+'Yellow Pepper',1
+'Scotch Bonnet',2
+'Malt Vinegar',2
+'Peas',2
+'Pita Bread',2
+'Ground Pork',1
+'Rice Vinegar',2
+'Floury Potatoes',1
+'Semi-skimmed Milk',1
+'White Fish Fillets',2
+'Plain flour',1
+'Jerusalem Artichokes',1
+'Prawns',1
+'Gruyre',2
+'Carrot',1
+'French Lentils',1
+'Clotted Cream',1
+'Fettuccine',2
+'Baked Beans',2
+'Lard',2
+'Cheddar Cheese',2
+'Parmesan',1
+'Tarragon',2
+'Chives',2
+'Fish Stock',1
+'Mussels',2
+'White Fish',2
+'Strawberries',1
+'Blackberries',1
+'Broad Beans',1
+'Haddock',2
+'Green Chilli',2
+'Cumin Seeds',2
+'Sardines',2
+'Heavy Cream',2
+'Cod',1
+'Raw king prawns',1
+'Chopped onion',1
+'Freshly chopped parsley',1
+'White wine',1
+'Minced garlic',2
+'Cubed Feta cheese',1
+'Macaroni',1
+'Garlic powder',1
+'Kosher salt',2
+'Black pepper',1
+'Cayenne pepper',1
+'Monterey Jack Cheese',2
+'garlic powder',1
+'Colby Jack Cheese',1
+'Duck Sauce',1
+'Gochujang',2
+'Dried Oregano',1
+'Chopped Parsley',2
+'Chocolate Chips',1
+'Condensed Milk',2
+'White Chocolate Chips',1
+'Miniature Marshmallows',1
+'Wood Ear Mushrooms',2
+'Tofu',1
+'Vinegar',1
+'Digestive Biscuits',2
+'Greek Yogurt',1
+'Fruit Mix',1
+'whole wheat',1
+'lamb loin chops',2
+'shallots',2
+'carrots',2
+'turnips',2
+'celeriac',1
+'charlotte potatoes',2
+'fresh thyme',1
+'oregano',1
+'Raspberry Jam',2
+'Kidney Beans',2
+'Curry Powder',2
+'Sushi Rice',1
+'Mirin',2
+'Fries',2
+'Doner Meat',2
+'Garlic sauce',2
+'Gouda cheese',2
+'paprika',2
+'onion salt',1
+'chili powder',1
+'black pepper',2
+'celery salt',1
+'sage',2
+'allspice',1
+'basil',2
+'marjoram',1
+'egg',2
+'breadcrumbs',2
+'onions',2
+'carrot',1
+'curry powder',2
+'honey',2
+'soy sauce',1
+'bay leaf',1
+'garam masala',2
+'Smoked Haddock',1
+'Water Chestnut',2
+'Peanuts',1
+'Sunflower Oil',2
+'Chilli',2
+'Ras el hanout',2
+'Pumpkin',2
+'Lamb',1
+'Saffron',2
+'Red Chile Flakes',2
+'Shortening',2
+'Canola Oil',1
+'Boiling Water',2
+'Brown Lentils',2
+'ginger',1
+'tomatoes',2
+'lemon juice',2
+'vine leaves',2
+'fennel bulb',2
+'lamb mince',2
+'potato',2
+'basmati rice',2
+'chopped parsley',2
+'coriander',1
+'clove',2
+'Cashew nuts',1
+'Khus khus',1
+'Ginger garlic paste',1
+'Basmati rice',1
+'Full fat yogurt',1
+'Bay leaf',2
+'Red Chilli powder',2
+'Biryani masala',2
+'Madras Paste',1
+'cinnamon stick',1
+'Clove',2
+'Tomato Pure',1
+'Greek yogurt',2
+'red chili',1
+'Thai red curry paste',2
+'vegetable stock cube',2
+'coconut milk',2
+'fish sauce',2
+'rice noodles',2
+'lime',2
+'king prawns',1
+'Lamb Leg',1
+'Butternut Squash',1
+'Lasagne Sheets',1
+'Mozzarella Balls',2
+'Lamb Kidney',1
+'Chopped Onion',2
+'Bulgur Wheat',2
+'Lamb Mince',2
+'Bun',1
+'Prunes',2
+'mozzarella balls',1
+'baby plum tomatoes',1
+'fresh basil',2
+'farfalle',2
+'extra virgin olive oil',1
+'Green Olives',1
+'tuna',1
+'pepper',1
+'Coconut cream',2
+'Massaman curry paste',1
+'Tamarind paste',1
+'Brown sugar',1
+'Fish Sauce',2
+'chilli',2
+'Jasmine Rice',1
+'Chestnuts',1
+'Wild Mushrooms',2
+'Sage',2
+'Truffle Oil',1
+'Paneer',1
+'Naan Bread',1
+'Doubanjiang',1
+'Fermented Black Beans',2
+'Sichuan pepper',1
+'Scallions',1
+'Goat Meat',1
+'Mincemeat',2
+'Mulukhiyah',1
+'Chinese Broccoli',2
+'Desiccated Coconut',1
+'Custard Powder',1
+'Ginger Paste',1
+'Anchovy Fillet',1
+'Veal',2
+'Orange Zest',1
+'Lemon Zest',2
+'Oxtail',1
+'Fresh Thyme',2
+'rice stick noodles',2
+'dark soy sauce',1
+'oyster sauce',1
+'white vinegar',2
+'water',2
+'peanut oil',2
+'Chinese broccoli',2
+'Spinach',1
+'Beef Gravy',1
+'Cheese Curds',2
+'Spaghetti',1
+'Pilchards',2
+'Fennel Seeds',2
+'Haricot Beans',2
+'Blueberries',2
+'Peanut Cookies',2
+'Gelatine Leafs',2
+'Golden Syrup',2
+'Peanut Brittle',2
+'Peaches',2
+'Oatmeal',2
+'Ground Ginger',2
+'Pears',1
+'Rocket',2
+'Tiger Prawns',1
+'Creamed Corn',2
+'Ciabatta',1
+'Squid',1
+'Baguette',1
+'Italian fennel sausages',2
+'smoky paprika',1
+'fennel seeds',1
+'red wine',1
+'chopped tomatoes',2
+'pitted black olives',2
+'rigatoni',1
+'pecorino',1
+'anchovy fillet',2
+'basil leaves',2
+'Mackerel',1
+'Red Chili',2
+'Tamarind ball',1
+'Canned tomatoes',1
+'Wholegrain Bread',1
+'Red Onion',1
+'Apple Cider Vinegar',1
+'Pine nuts',1
+'Baby Aubergine',1
+'Paella Rice',2
+'Frozen Peas',1
+'Jam',1
+'lean minced beef',2
+'dried oregano',1
+'hot beef stock',2
+'worcestershire sauce',2
+'spaghetti',2
+'parmesan',1
+'penne rigate',1
+'red chile flakes',2
+'italian seasoning',2
+'Parmigiano-Reggiano',1
+'Cashews',1
+'Medjool dates',1
+'vanilla extract',2
+'self-raising flour',1
+'bicarbonate of soda',1
+'demerara sugar',2
+'black treacle',1
+'ice cream',2
+'muscovado sugar',2
+'Spring onions',2
+'Harissa',2
+'Ground cumin',1
+'rice',2
+'vegetable stock',1
+'salmon',2
+'asparagus',2
+'Pretzels',1
+'Caramel',1
+'Caramel Sauce',2
+'Toffee Popcorn',2
+'Vermicelli',1
+'Monkfish',2
+'Baby Squid',1
+'Vine Tomatoes',1
+'Redcurrants',1
+'Dijon Mustard',1
+'Tabasco Sauce',1
+'Salt Cod',2
+'Ackee',2
+'Cooking wine',2
+'Rice Stick Noodles',2
+'English Muffins',1
+'Smoked Salmon',1
+'Pecorino',1
+'Apples',1
+'Zucchini',1
+'Rhubarb',1
+'Herring',1
+'Rice wine',1
+'Black Beans',1
+'brown sugar',2
+'ground ginger',1
+'minced garlic',2
+'cornstarch',1
+'stir-fry vegetables',1
+'brown rice',1
+'lemons',2
+'red onions',2
+'chicken thighs',1
+'garlic clove',1
+'ground cumin',2
+'chilli powder',1
+'turmeric',2
+'potatoes',1
+'green beans',1
+'Thai green curry paste',1
+'Thai fish sauce',2
+'sausages',1
+'horseradish',2
+'cherry tomatoes',2
+'Turkey Mince',1
+'Capers',1
+'Tuna',1
+'Tahini',2
+'Goats Cheese',2
+'green red lentils',1
+'zucchini',2
+'spinach',2
+'lasagne sheets',2
+'vegan butter',2
+'flour',1
+'soya milk',2
+'mustard',1
+'vinegar',2
+'self raising flour',2
+'coco sugar',2
+'cacao',2
+'baking powder',1
+'flax eggs',2
+'almond milk',2
+'vanilla',1
+'Rice Vermicelli',1
+'Egg Rolls',1
+'Paccheri Pasta',2
+'Roasted Vegetables',2
+'Mixed Grain',2
+'Kosher Salt',1
+'Wonton Skin',2
+'Udon Noodles',1

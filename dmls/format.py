@@ -48,6 +48,42 @@ def recipeDictionary(file_path):
     return recipe_dic
 
 # example
-recipes = recipeDictionary('recipes.json')
-print(recipes[60]['strMeal'])
+# recipes = recipeDictionary('raw_data\\recipes.json')
+# print(recipes[0]['strIngredient20'])
+
+def analyseMeasure(measure):
+    return
+
+def cleanText(string):
+    clean_str = ""
+    for char in string:
+        if not (char == '\n' or char == '\r'):
+            clean_str += char
+    return clean_str
+
+def analyseInstructions(instruction):
+    steps = []
+    step = ""
+    instr = cleanText(instruction)
+    for char in instr:
+        if char == '.':
+            steps.append(step)
+            step = ""
+        else:
+            step += char
+    return steps
+
+def stripChar(string, char_list):
+    s = ""
+    for char in string:
+        boolean = True
+        for c in char_list:
+            if char == c:
+                boolean = False
+        if boolean:
+            s += char
+    return s
+
+# instr = recipes[0]['strInstructions']
+# print(analyseInstructions(instr))
 

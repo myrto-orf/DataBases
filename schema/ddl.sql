@@ -23,7 +23,8 @@ USE `cooking_competition` ;
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Image` (
   `ImageID` INT NOT NULL AUTO_INCREMENT,
   `ImageDescription` VARCHAR(45) NULL,
-  `ImageFile` BLOB NOT NULL,
+  `ImageFile` BLOB NULL,
+  `ImageURL` VARCHAR(50) NULL,
   PRIMARY KEY (`ImageID`),
   UNIQUE (`ImageID`)
   )
@@ -331,7 +332,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Unit` (
   `UnitID` INT NOT NULL,
   `UnitName` VARCHAR(45) NOT NULL,
-  `UnitConvertValue` INT NOT NULL,
+  `UnitConvertValue` FLOAT NOT NULL,
   `StandardUnit_ID` INT NOT NULL,
   PRIMARY KEY (`UnitID`),
   INDEX `Unit_StandardUnitID_idx` (`StandardUnit_ID` ASC) ,
