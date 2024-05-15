@@ -32,18 +32,36 @@ def insertData(db, db_cursor, file_path, table_name):
 		db_cursor.execute(instr)
 		db.commit()
 
-# change the password if yours is different
-mydb = mysql.connector.connect(
+def buildAll():
+	mydb = mysql.connector.connect(
 	host = "localhost",
 	user = "root",
 	password = "password"
-)
+	)
 
-# Creating an instance of 'cursor' class 
-# which is used to execute the 'SQL' 
-# statements in 'Python'
-cursor = mydb.cursor()
+	cursor = mydb.cursor()
 
-cursor.execute("USE cooking_competition")
-# insertData(mydb, cursor, 'csv_files\cook.csv', 'Cook')
-# insertData(mydb, cursor, 'csv_files\StandardUnit.csv', 'StandardUnit')
+	with open('..\\schema\\ddl.sql', 'r') as file:
+		sql_script = file.read()
+	
+	for statement in sql_script.split(';'):
+		if statement.strip():
+			cursor.execute(statement)
+	
+	insertData(mydb, cursor, 'csv_files\cook.csv', 'Cook')
+	insertData(mydb, cursor, 'csv_files\FoodGroup.csv', 'FoodGroup')
+	insertData(mydb, cursor, 'csv_files\EthnicCuisine.csv', 'EthnicCuisine')
+	insertData(mydb, cursor, 'csv_files\Image.csv', 'Image')
+	insertData(mydb, cursor, 'csv_files\Ingredient.csv', 'Ingredient')
+	insertData(mydb, cursor, 'csv_files\Recipe.csv', 'Recipe')
+	insertData(mydb, cursor, 'csv_files\Image.csv', 'Image')
+	insertData(mydb, cursor, 'csv_files\MealCategory.csv', 'MealCategory')
+	insertData(mydb, cursor, 'csv_files\Step.csv', 'Step')
+	insertData(mydb, cursor, 'csv_files\MealCategory_Recipe.csv', 'MealCategory_Recipe')
+	insertData(mydb, cursor, 'csv_files\StandardUnit.csv', 'StandardUnit')
+	insertData(mydb, cursor, 'csv_files\\Unit.csv', 'Unit')
+	insertData(mydb, cursor, 'csv_files\Quantity.csv', 'Quantity')
+
+	return
+
+buildAll()

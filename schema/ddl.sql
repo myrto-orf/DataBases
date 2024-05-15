@@ -10,7 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema cooking_competition
 -- -----------------------------------------------------
-
+DROP DATABASE IF EXISTS `cooking_competition`;
 -- -----------------------------------------------------
 -- Schema cooking_competition
 -- -----------------------------------------------------
@@ -98,7 +98,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Recipe` (
   `RecipeID` INT NOT NULL AUTO_INCREMENT,
   `RecipeName` VARCHAR(45) NOT NULL,
-  `IsBaking` INT NULL,
+  `IsBaking` BOOL NULL,
   `DifficultyLevel` INT NOT NULL,
   `Description` VARCHAR(200) NULL,
   `PreparationTime` INT NULL,
@@ -110,7 +110,6 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`Recipe` (
   PRIMARY KEY (`RecipeID`),
   UNIQUE (`RecipeID`),
   CHECK (`DifficultyLevel` in (1, 2, 3, 4, 5)),
-  CHECK (`IsBaking` in (0, 1)),
   INDEX `Recipe_CuisineID_idx` (`CuisineID` ASC) ,
   INDEX `Recipe_MainIngredientID_idx` (`MainIngredientID` ASC) ,
   INDEX `Recipe_ImageID_idx` (`ImageID` ASC) ,
@@ -330,7 +329,7 @@ ENGINE = InnoDB;
 -- Table `cooking_competition`.`Unit`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Unit` (
-  `UnitID` INT NOT NULL,
+  `UnitID` INT NOT NULL AUTO_INCREMENT,
   `UnitName` VARCHAR(45) NOT NULL,
   `UnitConvertValue` FLOAT NOT NULL,
   `StandardUnit_ID` INT NOT NULL,
@@ -349,7 +348,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Quantity` (
   `QuantityID` INT NOT NULL AUTO_INCREMENT,
-  `QuantityValue` INT NOT NULL,
+  `QuantityValue` FLOAT NOT NULL,
   `RecipeID` INT NOT NULL,
   `IngredientID` INT NOT NULL,
   `UnitID` INT NOT NULL,
