@@ -454,7 +454,7 @@ ENGINE = InnoDB;
 -- Table `cooking_competition`.`Episode`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`Episode` (
-  `EpisodeID` INT NOT NULL,
+  `EpisodeID` INT NOT NULL AUTO_INCREMENT,
   `EpisodeNumber` INT NOT NULL,
   `SeasonID` INT NOT NULL,
   PRIMARY KEY (`EpisodeID`),
@@ -474,13 +474,11 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`Event` (
   `EventID` INT NOT NULL AUTO_INCREMENT,
   `ContestantID` INT NOT NULL,
   `RecipeID` INT NOT NULL,
-  `CuisineID` INT NOT NULL,
   `EpisodeID` INT NOT NULL,
   PRIMARY KEY (`EventID`),
   INDEX `Event_EpisodeID_idx` (`EpisodeID` ASC) ,
   INDEX `Event_ContestantID_idx` (`ContestantID` ASC) ,
   INDEX `Event_RecipeID_idx` (`RecipeID` ASC) ,
-  INDEX `Event_CuisineID_idx` (`CuisineID` ASC) ,
   CONSTRAINT `Event_EpisodeID`
     FOREIGN KEY (`EpisodeID`)
     REFERENCES `cooking_competition`.`Episode` (`EpisodeID`)
@@ -494,11 +492,6 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`Event` (
   CONSTRAINT `Event_RecipeID`
     FOREIGN KEY (`RecipeID`)
     REFERENCES `cooking_competition`.`Recipe` (`RecipeID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Event_CuisineID`
-    FOREIGN KEY (`CuisineID`)
-    REFERENCES `cooking_competition`.`EthnicCuisine` (`CuisineID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
