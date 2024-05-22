@@ -54,30 +54,6 @@ class access_db:
 			self.cursor.execute(instr)
 		self.mydb.commit()
 
-	def buildAll(self):
-		with open('..\\schema\\ddl.sql', 'r') as file:
-			sql_script = file.read()
-		
-		for statement in sql_script.split(';'):
-			if statement.strip():
-				self.cursor.execute(statement)
-		
-		access_db.insertData(self, 'csv_files\cook.csv', 'Cook')
-		access_db.insertData(self, 'csv_files\FoodGroup.csv', 'FoodGroup')
-		access_db.insertData(self, 'csv_files\EthnicCuisine.csv', 'EthnicCuisine')
-		access_db.insertData(self, 'csv_files\Image.csv', 'Image')
-		access_db.insertData(self, 'csv_files\Ingredient.csv', 'Ingredient')
-		access_db.insertData(self, 'csv_files\Recipe.csv', 'Recipe')
-		access_db.insertData(self, 'csv_files\Image.csv', 'Image')
-		access_db.insertData(self, 'csv_files\MealCategory.csv', 'MealCategory')
-		access_db.insertData(self, 'csv_files\Step.csv', 'Step')
-		access_db.insertData(self, 'csv_files\MealCategory_Recipe.csv', 'MealCategory_Recipe')
-		access_db.insertData(self, 'csv_files\StandardUnit.csv', 'StandardUnit')
-		access_db.insertData(self, 'csv_files\\Unit.csv', 'Unit')
-		access_db.insertData(self, 'csv_files\Quantity.csv', 'Quantity')
-
-		return
-
 	def insertList(self, list, table_name):
 		for dictionary in list:
 			instruction = ""
@@ -199,11 +175,82 @@ class access_db:
 
 		return
 	
+	def insertNutritionalContent(self):
+		nutritional_content_table = []
+		query = "select IngredientID from Ingredient"
+		result = access_db.readQuery(self, query)
+
+		for tuple in result:
+			IngredientID = tuple[0]
+			FatsPer100 = random.randint(10, 300)
+			ProteinPer100 = random.randint(10, 300)
+			CarbsPer100 = random.randint(10, 300)
+			CaloriesPer100 = random.randint(10, 300)
+
+			nutritional_info = {}
+			nutritional_info['IngredientID'] = IngredientID
+			nutritional_info['FatsPer100'] = FatsPer100
+			nutritional_info['ProteinPer100'] = ProteinPer100
+			nutritional_info['CarbsPer100'] = CarbsPer100
+			nutritional_info['CaloriesPer100'] = CaloriesPer100
+
+			nutritional_content_table.append(nutritional_info)
+
+		access_db.insertList(self, nutritional_content_table, "NutritionalContent")
+		return
+	
+	def insertExpertise(self):
+		expertise_table = []
+		query = "select CookID from Cook"
+		cook_ids = access_db.readQuery(self, query)
+		query = "select CuisineID from EthnicCuisine"
+		cuisine_ids = access_db.readQuery(self, query)
+
+		for cook_tuple in cook_ids:
+			cook_id = cook_tuple[0]
+			expertise_size = random.randint(0, 5)
+			indexes = random.sample(range(len(cuisine_ids)), expertise_size)
+			for index in indexes:
+				cuisine_id = cuisine_ids[index][0]
+				expertise = {}
+				expertise['CookID'] = cook_id
+				expertise['CuisineID'] = cuisine_id
+				expertise_table.append(expertise)
+		
+		access_db.insertList(self, expertise_table, "Expertise")
+		return
+	
+	def buildAll(self):
+		with open('..\\schema\\ddl.sql', 'r') as file:
+			sql_script = file.read()
+		
+		for statement in sql_script.split(';'):
+			if statement.strip():
+				self.cursor.execute(statement)
+		
+		access_db.insertData(self, 'csv_files\cook.csv', 'Cook')
+		access_db.insertData(self, 'csv_files\FoodGroup.csv', 'FoodGroup')
+		access_db.insertData(self, 'csv_files\EthnicCuisine.csv', 'EthnicCuisine')
+		access_db.insertData(self, 'csv_files\Image.csv', 'Image')
+		access_db.insertData(self, 'csv_files\Ingredient.csv', 'Ingredient')
+		access_db.insertData(self, 'csv_files\Recipe.csv', 'Recipe')
+		access_db.insertData(self, 'csv_files\Image.csv', 'Image')
+		access_db.insertData(self, 'csv_files\MealCategory.csv', 'MealCategory')
+		access_db.insertData(self, 'csv_files\Step.csv', 'Step')
+		access_db.insertData(self, 'csv_files\MealCategory_Recipe.csv', 'MealCategory_Recipe')
+		access_db.insertData(self, 'csv_files\StandardUnit.csv', 'StandardUnit')
+		access_db.insertData(self, 'csv_files\\Unit.csv', 'Unit')
+		access_db.insertData(self, 'csv_files\Quantity.csv', 'Quantity')
+
+		for _ in range(5):
+			access_db.insertSeason(self)
+		access_db.insertNutritionalContent(self)
+		access_db.insertExpertise(self)
+
+		return
+	
 	
 
 
 conne = access_db()
 conne.buildAll()
-for i in range(5):
-	conne.insertSeason()
-

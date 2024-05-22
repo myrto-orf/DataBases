@@ -16,7 +16,7 @@ cd to dmls folder
 
 create a virtual environment (python -m venv venv)
 
-type 'pip install requirements.txt' in your terminal to download python dependencies
+type 'pip install -r requirements.txt' in your terminal to download python dependencies
 
 type 'python access_db.py' to load the data from the cvs to your database
 

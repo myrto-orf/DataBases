@@ -379,7 +379,7 @@ ENGINE = InnoDB;
 -- Table `cooking_competition`.`NutritionalContent`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cooking_competition`.`NutritionalContent` (
-  `NutritionalContentID` INT NOT NULL,
+  `NutritionalContentID` INT NOT NULL AUTO_INCREMENT,
   `FatsPer100` INT NOT NULL,
   `ProteinPer100` INT NOT NULL,
   `CarbsPer100` INT NULL,
@@ -405,10 +405,9 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`Cook` (
   `LastName` VARCHAR(45) NOT NULL,
   `BirthDate` DATE NOT NULL,
   `ExperienceYears` INT NOT NULL,
-  `TrainingLevel` VARCHAR(45) NOT NULL,
+  `TrainingLevel` ENUM('C cook', 'B cook', 'A cook', 'sous chef', 'chef') NOT NULL,
   `ImageID` INT NULL,
   `PhoneNumber` VARCHAR(20) NULL,
-  CHECK (`TrainingLevel` in ("C cook", "B cook", "A cook", "sous chef", "chef")),
   PRIMARY KEY (`CookID`),
   INDEX `Cook_ImageID_idx` (`ImageID` ASC) ,
   CONSTRAINT `Cook_ImageID`
@@ -551,9 +550,38 @@ CREATE TABLE IF NOT EXISTS `cooking_competition`.`NutritionalTable` (`Nutritiona
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `cooking_competition`.`NutritionalTable`;
 USE `cooking_competition`;
-CREATE  OR REPLACE VIEW `NutritionalTable` AS
-	select *
-    from NutritionalContent;
+CREATE VIEW `NutritionalTable` AS
+SELECT 
+    r.RecipeID,
+    SUM(
+        q.QuantityValue * u.UnitConvertValue * n.FatsPer100
+         * 100 / r.NumberOfPortions
+    ) AS FatsPerPortion,
+    SUM(
+        q.QuantityValue * u.UnitConvertValue * n.CarbsPer100
+         * 100 / r.NumberOfPortions
+    ) AS CarbsPerPortion,
+    SUM(
+        q.QuantityValue * u.UnitConvertValue * n.CaloriesPer100
+         * 100 / r.NumberOfPortions
+    ) AS CaloriesPerPortion,
+    SUM(
+        q.QuantityValue * u.UnitConvertValue * n.ProteinPer100
+         * 100 / r.NumberOfPortions
+    ) AS ProteinPerPortion
+FROM 
+    recipe r
+JOIN 
+    quantity q ON r.RecipeID = q.RecipeID
+JOIN 
+    unit u ON q.UnitID = u.UnitID
+JOIN
+    ingredient i on q.IngredientID = i.IngredientID
+JOIN 
+    NutritionalContent n ON q.IngredientID = n.IngredientID
+GROUP BY 
+    r.RecipeID;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
