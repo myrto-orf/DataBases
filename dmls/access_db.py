@@ -221,6 +221,13 @@ class access_db:
 		return
 	
 	def buildAll(self):
+		with open('..\\schema\\user_auth.sql', 'r') as file:
+			sql_script = file.read()
+		
+		for statement in sql_script.split(';'):
+			if statement.strip():
+				self.cursor.execute(statement)
+
 		with open('..\\schema\\ddl.sql', 'r') as file:
 			sql_script = file.read()
 		

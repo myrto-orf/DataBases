@@ -9,8 +9,9 @@ It is possible to query the data, add new data or delete data
 ## Installation Guide
 Install the xamp stack (Apache, mysql, php)
 
+clone the entire project in the folder ..\xamp\htdocs
+
 Open the xamp panel and run apache and mysql
-Use the file schema\ddl.sql to build the relations of the database (source <path_to_ddl.sql>)
 
 cd to dmls folder
 
@@ -18,8 +19,17 @@ create a virtual environment (python -m venv venv)
 
 type 'pip install -r requirements.txt' in your terminal to download python dependencies
 
-type 'python access_db.py' to load the data from the cvs to your database
+if the password of the root user is NOT `password` you will have run
+mysql from your terminal as the root user and type in this command:
+`ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';`
 
-you might need to change the password in the 'access_db.py' file to access your database
+type 'python access_db.py' to load the data to your database
 
 ## Use
+
+Open your browser and search for `localhost/DataBases/UI/templates/`
+
+Click on `initialize admin` to create a user with admin priviliges for the database
+
+You can then go back and log in with username `admin` and password `password`.
+This will allow you to create new users and access the database.
