@@ -122,6 +122,6 @@ $conn->close();
         }
     </style>
     <br><br><h4>Relational Diagram</h4>
-    <img src="..\..\schema\er_diagram.png" alt="relational diagram">
+    <img src="..\..\schema\relational.png" alt="relational diagram">
 </body>
 </html>

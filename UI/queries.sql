@@ -23,7 +23,7 @@ JOIN EthnicCuisine ON EthnicCuisine.CuisineID = Expertise.CuisineID
 where EthnicCuisine.CuisineID = 13
 
 -- 3.2.2
--- change where WHERE Season.Year = 2001
+-- change WHERE Season.Year = 2001
 -- to get results for a different season - year
 SELECT event.ContestantID
 FROM event
