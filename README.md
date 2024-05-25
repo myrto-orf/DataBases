@@ -19,7 +19,7 @@ create a virtual environment by typing `python -m venv venv`
 
 make sure to use the interpreter of your venv
 
-type 'pip install -r requirements.txt' in your terminal to download python dependencies
+type `pip install -r requirements.txt` in your terminal to download python dependencies
 
 if the password of the root user is NOT `password` you will have to run
 mysql from a terminal as the root user and type in this command:
