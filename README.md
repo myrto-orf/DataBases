@@ -15,15 +15,17 @@ Open the xamp panel and run apache and mysql
 
 cd to dmls folder
 
-create a virtual environment (python -m venv venv)
+create a virtual environment by typing `python -m venv venv`
+
+make sure to use the interpreter of your venv
 
 type 'pip install -r requirements.txt' in your terminal to download python dependencies
 
-if the password of the root user is NOT `password` you will have run
-mysql from your terminal as the root user and type in this command:
+if the password of the root user is NOT `password` you will have to run
+mysql from a terminal as the root user and type in this command:
 `ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';`
 
-type 'python access_db.py' to load the data to your database
+type `python access_db.py` to create your database
 
 ## Use
 
@@ -33,3 +35,5 @@ Click on `initialize admin` to create a user with admin priviliges for the datab
 
 You can then go back and log in with username `admin` and password `password`.
 This will allow you to create new users and access the database.
+
+Some queries are already written and can be found in UI\queries.sql
